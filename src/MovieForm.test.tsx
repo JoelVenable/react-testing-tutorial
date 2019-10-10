@@ -4,17 +4,26 @@ import MovieForm from './MovieForm';
 
 afterEach(cleanup);
 
-const onSubmit = jest.fn((e: React.FormEvent<HTMLFormElement>) => { });
+const onSubmit = jest.fn();
 
-test('<MovieForm />', () => {
+test('<MovieForm submitForm={mocked} />', () => {
   const {
-    queryByTestId, getByText,
+    queryByTestId, getByText, getByLabelText, container
   } = render(<MovieForm submitForm={onSubmit} />);
   expect(queryByTestId('new-movie-form')).toBeTruthy();
 
   const submitButton = getByText('Submit')
+  const input = getByLabelText('Text') as HTMLInputElement
+
+  fireEvent.change(input, { target: { value: 'hello' } })
 
   fireEvent.submit(submitButton)
+
+  expect(onSubmit).toHaveBeenCalledTimes(1)
+  expect(onSubmit).toHaveBeenCalledWith({
+    text: 'hello'
+  })
+
 
 
 

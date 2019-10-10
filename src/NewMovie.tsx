@@ -1,10 +1,13 @@
 import React from 'react';
 import MovieForm from './MovieForm';
 
+interface FormInput {
+  text: string
+}
 
 const NewMovie: React.FC = () => {
 
-  const submitForm = (e: React.FormEvent): void => {
+  const submitForm = ({ text }: FormInput): void => {
     console.log("Submitted");
   }
 

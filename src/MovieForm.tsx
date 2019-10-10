@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 interface Props {
-  submitForm: (e: React.FormEvent<HTMLFormElement>) => void
+  submitForm: ({ text: string }) => void
 }
 
 
@@ -9,13 +9,16 @@ const MovieForm: React.FC<Props> = ({ submitForm }: Props) => {
   const [text, setText] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
+    setText(e.currentTarget.value)
   };
 
 
   return (
-    <form data-testid="new-movie-form" onSubmit={submitForm}>
-      <input type="text" value={text} onChange={handleChange} />
+    <form data-testid="new-movie-form" onSubmit={() => submitForm({ text })}>
+      <label htmlFor="text">
+        Text
+      </label>
+      <input type="text" id="text" value={text} onChange={handleChange} />
       <button type="submit">Submit</button>
     </form>
   );
