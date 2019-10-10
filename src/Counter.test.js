@@ -1,20 +1,23 @@
-import React from 'react'
-import { render, cleanup } from '@testing-library/react'
-import Counter from './Counter'
+import React from 'react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import Counter from './Counter';
 
-afterEach(cleanup)
+afterEach(cleanup);
 
 
 test('<Counter />', () => {
-    const { getByTestId } = render(<Counter />)
+  const { getByTestId } = render(<Counter />);
 
-    const button = getByTestId('counter-button')
-
-
-
-    expect(button.tagName).toBe('BUTTON')
-    expect(button.textContent).toBe('0')
+  const button = getByTestId('counter-button');
 
 
+  expect(button.tagName).toBe('BUTTON');
+  expect(button.textContent).toBe('0');
 
-})
+
+  fireEvent.click(button);
+  expect(button.textContent).toBe('1');
+
+  fireEvent.click(button);
+  expect(button.textContent).toBe('2');
+});
