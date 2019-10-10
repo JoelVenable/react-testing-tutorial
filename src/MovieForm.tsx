@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 
 interface Props {
-  submitForm: React.FormEventHandler
+  submitForm: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
 
 const MovieForm: React.FC<Props> = ({ submitForm }: Props) => {
   const [text, setText] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted');
   };
 
 

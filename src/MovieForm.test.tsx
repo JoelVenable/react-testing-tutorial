@@ -4,7 +4,7 @@ import MovieForm from './MovieForm';
 
 afterEach(cleanup);
 
-const onSubmit = jest.fn(() => { });
+const onSubmit = jest.fn((e: React.FormEvent<HTMLFormElement>) => { });
 
 test('<MovieForm />', () => {
   const {
@@ -12,7 +12,11 @@ test('<MovieForm />', () => {
   } = render(<MovieForm submitForm={onSubmit} />);
   expect(queryByTestId('new-movie-form')).toBeTruthy();
 
-  fireEvent.click(getByText('Submit'));
+  const submitButton = getByText('Submit')
 
-  expect(onSubmit).toHaveBeenCalledTimes(1);
+  fireEvent.submit(submitButton)
+
+
+
 });
+

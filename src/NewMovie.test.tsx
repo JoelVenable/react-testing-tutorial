@@ -12,6 +12,4 @@ test('<NewMovie />', () => {
   expect(header.textContent).toBe('New Movie');
   expect(queryByTestId('new-movie-form')).toBeTruthy();
   expect(container.firstChild).toMatchSnapshot();
-
-  fireEvent.click(getByText('Submit'));
 });
