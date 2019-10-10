@@ -6,9 +6,9 @@ import {
 
 import logo from './logo.svg';
 import './App.css';
-
 import MoviesList from './MoviesList';
 import MovieDetail from './MovieDetail';
+import Counter from './Counter';
 
 const App = () => (
   <Router>
@@ -17,6 +17,7 @@ const App = () => (
         <Link to="/">
           <img src={logo} className="App-logo" alt="logo" />
         </Link>
+        <Counter />
       </header>
       <Switch>
         <Route exact path="/" component={MoviesList} />

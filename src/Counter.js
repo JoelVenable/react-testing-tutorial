@@ -9,7 +9,7 @@ class Counter extends React.Component {
 
 
   render() {
-    const count = this.state
+    const { count } = this.state
     return (
       <div>
         <button>
