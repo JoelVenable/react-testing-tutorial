@@ -7,6 +7,9 @@ afterEach(cleanup)
 
 test('<Counter />', () => {
     const wrapper = render(<Counter />)
-    wrapper.debug();
+    const tag = wrapper.getByText('0').tagName
+
+    expect(tag).toBe('BUTTON')
+
 
 })
