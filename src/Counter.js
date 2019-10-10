@@ -12,7 +12,7 @@ class Counter extends React.Component {
     const { count } = this.state
     return (
       <div>
-        <button>
+        <button data-testid="counter-button">
           {count}
         </button>
       </div>
